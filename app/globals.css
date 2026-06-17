@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Theme variants — driven by <html data-theme="cream | dark | red">
+   `dark:` and `red:` Tailwind variants are remapped from the default
+   prefers-color-scheme behaviour to the explicit data-theme attribute so the
+   three theme buttons can swap instantly.
+--------------------------------------------------------------------------- */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant red (&:where([data-theme="red"], [data-theme="red"] *));
+
+@theme {
+  /* Brand palette. `cream` is the studio's "white". */
+  --color-cream: #ede4dd;
+  --color-red: #ff0001;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* Self-hosted Neue Haas substitute, injected via next/font in layout.tsx. */
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Times New Roman", Times, serif;
+
+  /* Product image aspect ratios from the original. */
+  --aspect-large: 9 / 12;
+  --aspect-small: 242 / 240;
+
+  /* Custom easing library used across the motion inventory. */
+  --ease-out-extreme: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-extreme: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-out-standard: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-quick-reveal: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+:root {
+  --cursor-color: var(--color-red);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    /* Lenis manages scroll; disable native smooth scroll to avoid conflict. */
+    scroll-behavior: auto;
+  }
+
+  /* Lenis adds .lenis to <html>; these are its recommended base styles. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+
+  body {
+    font-feature-settings: "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-red);
+    color: var(--color-cream);
+  }
+
+  /* Hide the native cursor once the custom cursor takes over (desktop only). */
+  .has-custom-cursor,
+  .has-custom-cursor a,
+  .has-custom-cursor button {
+    cursor: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Components / utilities
+--------------------------------------------------------------------------- */
+@layer components {
+  /* Animated underline that grows in from the left on hover. */
+  .link-hover {
+    position: relative;
+    display: inline-block;
+  }
+  .link-hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15em;
+    height: 2.4px;
+    width: 0;
+    background-color: var(--cursor-color);
+    transition: width 0.45s var(--ease-out-extreme);
+  }
+  .link-hover:hover::after {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

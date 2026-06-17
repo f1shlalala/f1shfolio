@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" font-family="'Space Grotesk', Arial, sans-serif">
+  <rect width="900" height="1200" fill="#ede4dd"/>
+  <g stroke="#000000" stroke-width="1.5" opacity="0.15">
+    <line x1="54" y1="108" x2="846" y2="108"/>
+    <line x1="54" y1="1092" x2="846" y2="1092"/>
+  </g>
+  <text x="54" y="91.8" fill="#000000" font-size="63" font-weight="700" letter-spacing="-2">Owned</text>
+  <text x="846" y="91.8" fill="#ff0001" font-size="45" font-weight="700" text-anchor="end">05</text>
+  <text x="450" y="636" fill="#ff0001" font-size="198" font-weight="700" text-anchor="middle" letter-spacing="-6">05</text>
+  <text x="54" y="1146" fill="#000000" font-size="41" font-weight="500">Polaroid camera</text>
+</svg>

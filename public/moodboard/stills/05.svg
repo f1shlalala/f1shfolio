@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" font-family="'Space Grotesk', Arial, sans-serif">
+  <rect width="1000" height="1000" fill="#ff0001"/>
+  <g stroke="#ede4dd" stroke-width="1.5" opacity="0.15">
+    <line x1="60" y1="120" x2="940" y2="120"/>
+    <line x1="60" y1="880" x2="940" y2="880"/>
+  </g>
+  <text x="60" y="102" fill="#ede4dd" font-size="70" font-weight="700" letter-spacing="-2">Stills</text>
+  <text x="940" y="102" fill="#000000" font-size="50" font-weight="700" text-anchor="end">05</text>
+  <text x="500" y="540" fill="#000000" font-size="220" font-weight="700" text-anchor="middle" letter-spacing="-6">05</text>
+  <text x="60" y="940" fill="#ede4dd" font-size="45" font-weight="500">Subway blur</text>
+</svg>

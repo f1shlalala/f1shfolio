@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="'Space Grotesk', Arial, sans-serif">
+  <rect width="1280" height="720" fill="#ede4dd"/>
+  <g stroke="#000000" stroke-width="1.5" opacity="0.15">
+    <line x1="77" y1="154" x2="1203" y2="154"/>
+    <line x1="77" y1="566" x2="1203" y2="566"/>
+  </g>
+  <text x="77" y="130.9" fill="#000000" font-size="90" font-weight="700" letter-spacing="-2">Stills</text>
+  <text x="1203" y="130.9" fill="#ff0001" font-size="64" font-weight="700" text-anchor="end">03</text>
+  <text x="640" y="411.2" fill="#ff0001" font-size="282" font-weight="700" text-anchor="middle" letter-spacing="-6">03</text>
+  <text x="77" y="643" fill="#000000" font-size="58" font-weight="500">Noon shadow</text>
+</svg>

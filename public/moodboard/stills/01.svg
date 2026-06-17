@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="'Space Grotesk', Arial, sans-serif">
+  <rect width="1200" height="900" fill="#000000"/>
+  <g stroke="#ede4dd" stroke-width="1.5" opacity="0.15">
+    <line x1="72" y1="144" x2="1128" y2="144"/>
+    <line x1="72" y1="756" x2="1128" y2="756"/>
+  </g>
+  <text x="72" y="122.39999999999999" fill="#ede4dd" font-size="84" font-weight="700" letter-spacing="-2">Stills</text>
+  <text x="1128" y="122.39999999999999" fill="#ff0001" font-size="60" font-weight="700" text-anchor="end">01</text>
+  <text x="600" y="498" fill="#ff0001" font-size="264" font-weight="700" text-anchor="middle" letter-spacing="-6">01</text>
+  <text x="72" y="828" fill="#ede4dd" font-size="54" font-weight="500">Lisbon, 6am</text>
+</svg>
