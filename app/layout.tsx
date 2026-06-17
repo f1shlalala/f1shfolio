@@ -30,6 +30,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="cream"
+      suppressHydrationWarning
       className={`${spaceGrotesk.variable} h-full antialiased`}
     >
       <head>

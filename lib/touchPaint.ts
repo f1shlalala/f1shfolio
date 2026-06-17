@@ -8,6 +8,10 @@
 // finger across the grid and each tile blooms (ASCII -> photo) as it passes
 // beneath your thumb; hold still and it fills in place (tap-to-bloom for free).
 //
+// It also marks the tile figure under the finger with an `is-touched` class so
+// hover-only reveals (the caption, the image scale) fire on touch for *every*
+// tile, not just the ones with a WebGL dissolve.
+//
 // Passive throughout — we never preventDefault, so native scrolling is never
 // blocked. elementFromPoint means only the tile under the finger (and the one it
 // just left) is woken, not all of them, so idle WebGL tiles stay asleep.
@@ -16,17 +20,25 @@ export type PaintPoint = { clientX: number; clientY: number } | null;
 type Cb = (p: PaintPoint) => void;
 
 const registry = new Map<HTMLElement, Cb>();
-let lastEl: HTMLElement | null = null;
+let lastEl: HTMLElement | null = null;        // last painted dissolve wrapper
+let lastFigure: HTMLElement | null = null;    // last touched tile figure
 let installed = false;
 
-function resolve(x: number, y: number): HTMLElement | null {
-  const hit = document.elementFromPoint(x, y) as HTMLElement | null;
-  const el = hit?.closest<HTMLElement>("[data-dissolve]") ?? null;
-  return el && registry.has(el) ? el : null;
-}
-
 function move(x: number, y: number) {
-  const el = resolve(x, y);
+  const hit = document.elementFromPoint(x, y) as HTMLElement | null;
+
+  // Caption/scale focus: every tile figure (paint or plain) gets `is-touched`
+  // while the finger is over it, so hover-only reveals work on touch too.
+  const figure = hit?.closest<HTMLElement>("[data-tile]") ?? null;
+  if (figure !== lastFigure) {
+    lastFigure?.classList.remove("is-touched");
+    figure?.classList.add("is-touched");
+    lastFigure = figure;
+  }
+
+  // Paint: only tiles with a registered WebGL dissolve get a brush point.
+  const d = hit?.closest<HTMLElement>("[data-dissolve]") ?? null;
+  const el = d && registry.has(d) ? d : null;
   if (el !== lastEl) {
     if (lastEl) registry.get(lastEl)?.(null); // let the tile we left recede
     lastEl = el;
@@ -37,6 +49,8 @@ function move(x: number, y: number) {
 function end() {
   if (lastEl) registry.get(lastEl)?.(null);
   lastEl = null;
+  lastFigure?.classList.remove("is-touched");
+  lastFigure = null;
 }
 
 function install() {
