@@ -49,12 +49,12 @@ export const sections: Section[] = [
     label: "Fits",
     blurb: "What I reach for.",
     tiles: [
-      { src: "/moodboard/fits/fit-02.jpg", alt: "Dragon-print trousers, night", caption: "Dragon-print trousers", hoverSrc: "/moodboard/fits/fit-02-ascii.jpg", hoverAlt: "ASCII rendering of the photo", size: "feature", ratio: "portrait", col: 1 },
-      { src: "/moodboard/fits/fit-01.jpg", alt: "Washed Cultx tee", caption: "Washed Cultx tee", hoverSrc: "/moodboard/fits/fit-01-ascii.jpg", hoverAlt: "ASCII rendering of the photo", size: "sm", ratio: "portrait", col: 10 },
-      { src: "/moodboard/fits/fit-03.jpg", alt: "Draped shawl on the beach", caption: "Draped shawl, beach", hoverSrc: "/moodboard/fits/fit-03-ascii.jpg", hoverAlt: "ASCII rendering of the photo", size: "md", ratio: "portrait", col: 2 },
-      { src: "/moodboard/fits/fit-04.jpg", alt: "Black hoodie fit", caption: "Black hoodie fit", hoverSrc: "/moodboard/fits/fit-04-ascii.jpg", hoverAlt: "ASCII rendering of the photo", size: "sm", ratio: "portrait", col: 7 },
-      { src: "/moodboard/fits/fit-05.jpeg", alt: "Overlooking the hills", caption: "On the overlook", hoverSrc: "/moodboard/fits/fit-05-ascii.jpeg", hoverAlt: "ASCII rendering of the photo", size: "lg", ratio: "photo", col: 1 },
-      { src: "/moodboard/fits/fit-06.jpg", alt: "Draped shawl on the river", caption: "Draped shawl, river", hoverSrc: "/moodboard/fits/fit-06-ascii.png", hoverAlt: "ASCII rendering of the photo", size: "md", ratio: "portrait", col: 8 },
+      { src: "/moodboard/fits/fit-02.webp", alt: "Dragon-print trousers, night", caption: "Dragon-print trousers", hoverSrc: "/moodboard/fits/fit-02-ascii.webp", hoverAlt: "ASCII rendering of the photo", size: "feature", ratio: "portrait", col: 1 },
+      { src: "/moodboard/fits/fit-01.webp", alt: "Washed Cultx tee", caption: "Washed Cultx tee", hoverSrc: "/moodboard/fits/fit-01-ascii.webp", hoverAlt: "ASCII rendering of the photo", size: "sm", ratio: "portrait", col: 10 },
+      { src: "/moodboard/fits/fit-03.webp", alt: "Draped shawl on the beach", caption: "Draped shawl, beach", hoverSrc: "/moodboard/fits/fit-03-ascii.webp", hoverAlt: "ASCII rendering of the photo", size: "md", ratio: "portrait", col: 2 },
+      { src: "/moodboard/fits/fit-04.webp", alt: "Black hoodie fit", caption: "Black hoodie fit", hoverSrc: "/moodboard/fits/fit-04-ascii.webp", hoverAlt: "ASCII rendering of the photo", size: "sm", ratio: "portrait", col: 7 },
+      { src: "/moodboard/fits/fit-05.webp", alt: "Overlooking the hills", caption: "On the overlook", hoverSrc: "/moodboard/fits/fit-05-ascii.webp", hoverAlt: "ASCII rendering of the photo", size: "lg", ratio: "photo", col: 1 },
+      { src: "/moodboard/fits/fit-06.webp", alt: "Draped shawl on the river", caption: "Draped shawl, river", hoverSrc: "/moodboard/fits/fit-06-ascii.webp", hoverAlt: "ASCII rendering of the photo", size: "md", ratio: "portrait", col: 8 },
     ],
   },
   {

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import PrototypeDissolve from "@/components/PrototypeDissolve";
 
-const ASCII = "/moodboard/fits/fit-02-ascii.jpg";
-const PHOTO = "/moodboard/fits/fit-02.jpg";
+const ASCII = "/moodboard/fits/fit-02-ascii.webp";
+const PHOTO = "/moodboard/fits/fit-02.webp";
 
 const VARIANTS = [
   { id: 1, name: "Ripple", desc: "Refractive wavefront blooms from the cursor" },
