@@ -164,8 +164,34 @@ export default function DissolveImage({
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [webgl, setWebgl] = useState(false);
+  const [inView, setInView] = useState(false);
+
+  // Defer all heavy work (loading the hi-res hover photo + spinning up WebGL)
+  // until the tile is near the viewport. Without this, every off-screen tile
+  // eagerly fetches its images on mount and saturates mobile bandwidth, so the
+  // resting photos load painfully slowly or not at all.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!inView) return;
     // Note: we no longer bail on touch. On a touchscreen the fine-pointer
     // listeners below simply never fire, and the global touch-paint controller
     // drives the brush from the finger instead (see registerPaintTarget below).
@@ -402,7 +428,7 @@ export default function DissolveImage({
       const lose = gl.getExtension("WEBGL_lose_context");
       lose?.loseContext();
     };
-  }, [src, hoverSrc]);
+  }, [inView, src, hoverSrc]);
 
   return (
     <div ref={wrapRef} data-dissolve className={className}>
