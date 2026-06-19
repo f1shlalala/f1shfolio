@@ -1,4 +1,5 @@
 import { profile, sections } from "@/lib/moodboard";
+import Magnetic from "./Magnetic";
 
 function Column({
   title,
@@ -25,13 +26,15 @@ export default function Footer() {
         <Column title="Index">
           {sections.map((s) => (
             <li key={s.id}>
-              <a
-                href={`#${s.id}`}
-                data-cursor
-                className="link-hover text-sm uppercase tracking-tight"
-              >
-                {s.label}
-              </a>
+              <Magnetic>
+                <a
+                  href={`#${s.id}`}
+                  data-cursor
+                  className="link-hover text-sm uppercase tracking-tight"
+                >
+                  {s.label}
+                </a>
+              </Magnetic>
             </li>
           ))}
         </Column>
@@ -39,13 +42,15 @@ export default function Footer() {
         <Column title="Elsewhere">
           {profile.socials.map((s) => (
             <li key={s.label}>
-              <a
-                href={s.href}
-                data-cursor
-                className="link-hover text-sm uppercase tracking-tight"
-              >
-                {s.label}
-              </a>
+              <Magnetic>
+                <a
+                  href={s.href}
+                  data-cursor
+                  className="link-hover text-sm uppercase tracking-tight"
+                >
+                  {s.label}
+                </a>
+              </Magnetic>
             </li>
           ))}
         </Column>

@@ -47,7 +47,12 @@ export default function MoodItem({
   const colStart = tile.col ? colStartClasses[tile.col] : "";
 
   return (
-    <Reveal delay={delay} className={`${sizeClasses[tile.size]} ${colStart}`}>
+    <Reveal
+      variant="wipe"
+      duration={700}
+      delay={delay}
+      className={`${sizeClasses[tile.size]} ${colStart}`}
+    >
       <figure
         data-cursor
         data-cursor-label="View"

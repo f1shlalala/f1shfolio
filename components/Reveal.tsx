@@ -8,10 +8,14 @@ export default function Reveal({
   children,
   className = "",
   delay = 0,
+  variant = "fade",
+  duration = 500,
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  variant?: "fade" | "wipe";
+  duration?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [inview, setInview] = useState(false);
@@ -49,14 +53,23 @@ export default function Reveal({
     };
   }, []);
 
+  // Wipe reveals the content behind an upward clip-path sweep (paired with a
+  // small rise); fade is the original translate + opacity.
+  const motion =
+    variant === "wipe"
+      ? inview
+        ? "translate-y-0 opacity-100 [clip-path:inset(0_0_0_0)]"
+        : "translate-y-4 opacity-0 [clip-path:inset(100%_0_0_0)]"
+      : inview
+        ? "translate-y-0 opacity-100"
+        : "translate-y-8 opacity-0";
+
   return (
     <div
       ref={ref}
       data-inview={inview}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-500 ease-[var(--ease-out-extreme)] ${
-        inview ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-      } ${className}`}
+      style={{ transitionDelay: `${delay}ms`, transitionDuration: `${duration}ms` }}
+      className={`transition-all ease-[var(--ease-out-extreme)] ${motion} ${className}`}
     >
       {children}
     </div>

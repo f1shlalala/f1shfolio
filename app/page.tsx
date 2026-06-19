@@ -3,11 +3,15 @@ import Wordmark from "@/components/Wordmark";
 import Reveal from "@/components/Reveal";
 import MoodboardSection from "@/components/MoodboardSection";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import IntroGate from "@/components/IntroGate";
 import { profile, sections } from "@/lib/moodboard";
 
 export default function Home() {
   return (
     <>
+      <IntroGate />
+      <ScrollProgress />
       <Header />
       <main className="flex-1">
         {/* About / Intro hero */}
