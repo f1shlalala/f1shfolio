@@ -18,21 +18,10 @@ export const metadata: Metadata = {
     "A living moodboard and casual portfolio: fits, objects, photography, and the things I keep close.",
 };
 
-// Runs before first paint. (1) Applies the persisted theme so there's no flash
-// of the default. (2) If the intro should play (not seen this session, motion
-// allowed), marks <html> so a black cover paints immediately — this hides the
-// landing until the preloader mounts, so the loader appears first (no flash of
-// the page). A safety timer clears the cover if the intro never runs.
+// Runs before first paint: applies the persisted theme so there's no flash of the
+// default. (The cinematic intro now lives on the apex hub, not here.)
 const prePaintScript = `(function(){
   try{var t=localStorage.getItem('theme');if(t){document.documentElement.dataset.theme=t;}}catch(e){}
-  try{
-    var seen=sessionStorage.getItem('intro-seen');
-    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!seen&&!reduced){
-      var d=document.documentElement;d.classList.add('intro-pending');
-      setTimeout(function(){d.classList.remove('intro-pending');},5000);
-    }
-  }catch(e){}
 })();`;
 
 export default function RootLayout({
