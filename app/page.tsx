@@ -4,9 +4,10 @@ import Reveal from "@/components/Reveal";
 import MoodboardSection from "@/components/MoodboardSection";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
-import { profile, sections } from "@/lib/moodboard";
+import { getMoodboard } from "@/lib/fetchMoodboard";
 
-export default function Home() {
+export default async function Home() {
+  const { profile, sections } = await getMoodboard();
   return (
     <>
       <ScrollProgress />
