@@ -23,6 +23,8 @@ export type Section = {
   tiles: Tile[];
 };
 
+export type Profile = typeof profile;
+
 export const profile = {
   name: "TAUSIF HASAN ",
   // The giant wordmark hero. Swap for your (first) name — one word reads best.

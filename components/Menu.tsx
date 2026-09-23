@@ -1,24 +1,25 @@
 "use client";
 
 import { useEffect } from "react";
-import { sections } from "@/lib/moodboard";
+import type { Section } from "@/lib/moodboard";
 import { useScrollTo } from "@/lib/useScrollTo";
-
-const links = [
-  { id: "about", label: "TL;DR" },
-  ...sections.map((s) => ({ id: s.id, label: s.label })),
-  { id: "contact", label: "Contact" },
-];
 
 // Fullscreen overlay menu with staggered nav links. Locks scroll while open and
 // smooth-scrolls to the target section on click.
 export default function Menu({
   open,
   onClose,
+  sections,
 }: {
   open: boolean;
   onClose: () => void;
+  sections: Section[];
 }) {
+  const links = [
+    { id: "about", label: "TL;DR" },
+    ...sections.map((s) => ({ id: s.id, label: s.label })),
+    { id: "contact", label: "Contact" },
+  ];
   const scrollTo = useScrollTo();
 
   useEffect(() => {

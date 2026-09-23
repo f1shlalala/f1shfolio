@@ -1,4 +1,4 @@
-import { profile as staticProfile, sections as staticSections } from "./moodboard";
+import { profile as staticProfile, sections as staticSections, type Profile, type Section } from "./moodboard";
 
 const HUB = process.env.NEXT_PUBLIC_HUB_URL || "https://tausifhasan.com";
 
@@ -10,7 +10,7 @@ export async function getMoodboard() {
     if (!r.ok) throw new Error(String(r.status));
     const data = await r.json();
     if (!data?.sections?.length) throw new Error("empty");
-    return data as { profile: typeof staticProfile; sections: typeof staticSections };
+    return data as { profile: Profile; sections: Section[] };
   } catch {
     return { profile: staticProfile, sections: staticSections };
   }

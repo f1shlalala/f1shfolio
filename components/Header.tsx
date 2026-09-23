@@ -4,12 +4,12 @@ import { useState } from "react";
 import Menu from "./Menu";
 import ThemeSwitch from "./ThemeSwitch";
 import Magnetic from "./Magnetic";
-import { profile, sections } from "@/lib/moodboard";
+import type { Profile, Section } from "@/lib/moodboard";
 import { useScrollTo } from "@/lib/useScrollTo";
 import { useActiveSection } from "@/lib/useActiveSection";
 
 // Sticky top bar: name · section quick-links (desktop) · theme switch · Menu.
-export default function Header() {
+export default function Header({ profile, sections }: { profile: Profile; sections: Section[] }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const scrollTo = useScrollTo();
   const active = useActiveSection(sections.map((s) => s.id));
@@ -61,7 +61,7 @@ export default function Header() {
         </nav>
       </header>
 
-      <Menu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <Menu open={menuOpen} onClose={() => setMenuOpen(false)} sections={sections} />
     </>
   );
 }

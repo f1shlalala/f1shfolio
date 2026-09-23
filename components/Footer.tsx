@@ -1,5 +1,11 @@
-import { profile, sections } from "@/lib/moodboard";
+import type { Profile, Section } from "@/lib/moodboard";
 import Magnetic from "./Magnetic";
+
+// Bare emails typed in admin ("me@x.com") need mailto:, bare domains need https://.
+const toHref = (h: string) =>
+  /^[^\s@/:]+@[^\s@]+$/.test(h) ? `mailto:${h}`
+  : /^([a-z]+:|#|\/)/i.test(h) ? h
+  : `https://${h}`;
 
 function Column({
   title,
@@ -16,7 +22,7 @@ function Column({
   );
 }
 
-export default function Footer() {
+export default function Footer({ profile, sections }: { profile: Profile; sections: Section[] }) {
   return (
     <footer
       id="contact"
@@ -40,11 +46,12 @@ export default function Footer() {
         </Column>
 
         <Column title="Elsewhere">
-          {profile.socials.map((s) => (
-            <li key={s.label}>
+          {profile.socials.filter((s) => s.label && s.href).map((s, i) => (
+            <li key={i}>
               <Magnetic>
                 <a
-                  href={s.href}
+                  href={toHref(s.href)}
+                  {...(/^https?:/.test(s.href) && { target: "_blank", rel: "noreferrer" })}
                   data-cursor
                   className="link-hover text-sm uppercase tracking-tight"
                 >

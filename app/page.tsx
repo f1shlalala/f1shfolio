@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <>
       <ScrollProgress />
-      <Header />
+      <Header profile={profile} sections={sections} />
       <main className="flex-1">
         {/* About / Intro hero */}
         <section id="about" className="scroll-mt-20 px-4 pb-8 pt-20 lg:px-6 lg:pt-28">
@@ -38,7 +38,7 @@ export default async function Home() {
           <MoodboardSection key={section.id} section={section} />
         ))}
       </main>
-      <Footer />
+      <Footer profile={profile} sections={sections} />
     </>
   );
 }
